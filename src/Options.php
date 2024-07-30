@@ -224,6 +224,7 @@ class Options
     private bool $noPostOverwrites = false;
     private bool $embedSubs = false;
     private bool $embedThumbnail = false;
+    private bool $embedChapters = false;
     private bool $addMetadata = false;
     private ?string $metadataFromTitle = null;
     private bool $xattrs = false;
@@ -1883,6 +1884,7 @@ class Options
             'no-post-overwrites' => $this->noPostOverwrites,
             'embed-subs' => $this->embedSubs,
             'embed-thumbnail' => $this->embedThumbnail,
+            'embed-chapters' => $this->embedChapters,
             'add-metadata' => $this->addMetadata,
             'metadata-from-title' => $this->metadataFromTitle,
             'xattrs' => $this->xattrs,
