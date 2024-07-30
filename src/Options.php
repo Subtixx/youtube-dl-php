@@ -228,6 +228,13 @@ class Options
     private ?string $exec = null;
     private ?string $convertSubsFormat = null;
 
+    // SponsorBlock Options
+    private ?string $sponsorblockMark = null;
+    private ?string $sponsorblockRemove = null;
+    private ?string $sponsorblockChapterTitle = null;
+    private ?string $sponsorblockApi = null;
+    private bool $noSponsorblock = false;
+
     /**
      * @var list<non-empty-string>
      */
@@ -1569,6 +1576,46 @@ class Options
         return $new;
     }
 
+    public function sponsorblockMark(?string $sponsorblockMark): self
+    {
+        $new = clone $this;
+        $new->sponsorblockMark = $sponsorblockMark;
+
+        return $new;
+    }
+
+    public function sponsorblockRemove(?string $sponsorblockRemove): self
+    {
+        $new = clone $this;
+        $new->sponsorblockRemove = $sponsorblockRemove;
+
+        return $new;
+    }
+
+    public function sponsorblockChapterTitle(?string $sponsorblockChapterTitle): self
+    {
+        $new = clone $this;
+        $new->sponsorblockChapterTitle = $sponsorblockChapterTitle;
+
+        return $new;
+    }
+
+    public function noSponsorblock(bool $noSponsorblock): self
+    {
+        $new = clone $this;
+        $new->noSponsorblock = $noSponsorblock;
+
+        return $new;
+    }
+
+    public function sponsorblockApi(?string $sponsorblockApi): self
+    {
+        $new = clone $this;
+        $new->sponsorblockApi = $sponsorblockApi;
+
+        return $new;
+    }
+
     public function addMetadata(bool $addMetadata): self
     {
         $new = clone $this;
@@ -1798,6 +1845,12 @@ class Options
             'exec' => $this->exec,
             'convert-subs-format' => $this->convertSubsFormat,
             'url' => $this->url,
+            // SponsorBlock Options
+            'sponsorblock-mark' => $this->sponsorblockMark,
+            'sponsorblock-remove' => $this->sponsorblockRemove,
+            'sponsorblock-chapter-title' => $this->sponsorblockChapterTitle,
+            'sponsorblock-api' => $this->sponsorblockApi,
+            'no-sponsorblock' => $this->noSponsorblock,
         ];
     }
 
