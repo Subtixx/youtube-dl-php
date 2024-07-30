@@ -150,6 +150,9 @@ class Options
     private bool $writeThumbnail = false;
     private bool $writeAllThumbnails = false;
 
+    // Write Comments Options
+    private bool $writeComments = false;
+
     // Verbosity / Simulation Options
     private bool $skipDownload = false;
     private bool $verbose = false;
@@ -215,6 +218,8 @@ class Options
     private ?string $remuxVideo = null;
     private ?string $recodeVideo = null;
     private ?string $postProcessorArgs = null;
+    private ?string $usePostProcessor = null;
+    private ?string $extractorArgs = null;
     private bool $keepVideo = false;
     private bool $noPostOverwrites = false;
     private bool $embedSubs = false;
@@ -1028,6 +1033,17 @@ class Options
     }
 
     /**
+     * Write video comments to the info json file.
+     */
+    public function writeComments(bool $writeComments): self
+    {
+        $new = clone $this;
+        $new->writeComments = $writeComments;
+
+        return $new;
+    }
+
+    /**
      * Do not download the video.
      */
     public function skipDownload(bool $skipDownload): self
@@ -1544,6 +1560,22 @@ class Options
         return $new;
     }
 
+    public function usePostProcessor(?string $usePostProcessor): self
+    {
+        $new = clone $this;
+        $new->usePostProcessor = $usePostProcessor;
+
+        return $new;
+    }
+
+    public function extractorArgs(?string $extractorArgs): self
+    {
+        $new = clone $this;
+        $new->extractorArgs = $extractorArgs;
+
+        return $new;
+    }
+
     public function keepVideo(bool $keepVideo): self
     {
         $new = clone $this;
@@ -1782,6 +1814,8 @@ class Options
             // Thumbnail Images Options
             'write-thumbnail' => $this->writeThumbnail,
             'write-all-thumbnails' => $this->writeAllThumbnails,
+            // Write Comments Options
+            'write-comments' => $this->writeComments,
             // Verbosity / Simulation Options
             'skip-download' => $this->skipDownload,
             'verbose' => $this->verbose,
@@ -1832,6 +1866,8 @@ class Options
             'remux-video' => $this->remuxVideo,
             'recode-video' => $this->recodeVideo,
             'postprocessor-args' => $this->postProcessorArgs,
+            'use-postprocessor' => $this->usePostProcessor,
+            'extractor-args' => $this->extractorArgs,
             'keep-video' => $this->keepVideo,
             'no-post-overwrites' => $this->noPostOverwrites,
             'embed-subs' => $this->embedSubs,
