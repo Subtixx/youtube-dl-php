@@ -240,6 +240,9 @@ class Options
     private ?string $sponsorblockApi = null;
     private bool $noSponsorblock = false;
 
+    // Misc
+    private bool $noRemoveChapters = false;
+
     /**
      * @var list<non-empty-string>
      */
@@ -1648,6 +1651,14 @@ class Options
         return $new;
     }
 
+    public function noRemoveChapters(bool $noRemoveChapters): self
+    {
+        $new = clone $this;
+        $new->noRemoveChapters = $noRemoveChapters;
+
+        return $new;
+    }
+
     public function addMetadata(bool $addMetadata): self
     {
         $new = clone $this;
@@ -1887,6 +1898,8 @@ class Options
             'sponsorblock-chapter-title' => $this->sponsorblockChapterTitle,
             'sponsorblock-api' => $this->sponsorblockApi,
             'no-sponsorblock' => $this->noSponsorblock,
+            // Misc
+            'no-remove-chapters' => $this->noRemoveChapters,
         ];
     }
 
