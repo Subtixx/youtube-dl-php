@@ -1612,6 +1612,14 @@ class Options
         return $new;
     }
 
+    public function embedChapters(bool $embedChapters): self
+    {
+        $new = clone $this;
+        $new->embedChapters = $embedChapters;
+
+        return $new;
+    }
+
     public function sponsorblockMark(?string $sponsorblockMark): self
     {
         $new = clone $this;
