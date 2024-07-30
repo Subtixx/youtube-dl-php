@@ -24,6 +24,7 @@ class Video extends AbstractEntity
         'requested_subtitles' => Subtitles::class,
         'subtitles' => Subtitles::class,
         'automatic_captions' => Subtitles::class,
+        'sponsorblock_chapters' => SponsorBlockChapter::class,
         'thumbnails' => Thumbnail::class,
     ];
 
@@ -452,6 +453,14 @@ class Video extends AbstractEntity
     public function getAutomaticCaptions(): array
     {
         return $this->get('automatic_captions', []);
+    }
+
+    /**
+     * @return list<SponsorBlockChapter>
+     */
+    public function getSponsorBlockChapters(): array
+    {
+        return $this->get('sponsorblock_chapters', []);
     }
 
     public function getWebpageUrlBasename(): ?string
